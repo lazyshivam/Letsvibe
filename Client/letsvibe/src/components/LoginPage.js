@@ -1,21 +1,26 @@
 import React from 'react'
 
-function LoginPage() {
+function LoginPage(props) {
+	
   return (
    <>
    <div className="container">
 	<div className="screen">
 		<div className="screen__content">
-			<form className="login">
+			<form className="login" >
 				<div className="login__field">
 					<i className="login__icon fas fa-user"></i>
-					<input type="text" className="login__input" placeholder="User name / Email"/>
+					<input type="text" name="email"  className="login__input" placeholder="User name / Email" onChange={(event)=>{
+						props.setUsername(event.target.value)
+					}}/>
 				</div>
 				<div className="login__field">
 					<i className="login__icon fas fa-lock"></i>
-					<input type="password" className="login__input" placeholder="Password"/>
+					<input type="password"name="password"  className="login__input" placeholder="Password" onChange={(event)=>{
+						props.setPassword(event.target.value)
+					}}/>
 				</div>
-				<button className="button login__submit">
+				<button className="button login__submit" type="submit" onClick={props.joinRoom}>
 					<span className="button__text">Log In Now</span>
 					<i className="button__icon fas fa-chevron-right"></i>
 				</button>				
